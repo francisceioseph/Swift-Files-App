@@ -725,6 +725,7 @@ blockquote {
 ul {
   list-style-position: inside;
   list-style: disc;
+  font-family: 'Raleway','Helvetica Neue', Helvetica, Arial, serif;
   padding-left: 20px;
 }
 
