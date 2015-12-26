@@ -27,6 +27,7 @@ class FileHelper: NSObject {
     }
     
     func savePlainTextFileWithName(name: String, fileContent: String) -> Bool {
+        
         let filePath = self.documentsFolder().stringByAppendingString("/\(name).txt")
         let fileData = fileContent.dataUsingEncoding(NSUTF8StringEncoding)
         
@@ -34,6 +35,7 @@ class FileHelper: NSObject {
     }
     
     func deletePlainTextFileWithName(name: String) throws{
+        
         let filePath = self.documentsFolder().stringByAppendingString("/\(name).txt")
         try fileManager.removeItemAtPath(filePath)
     }
@@ -41,47 +43,54 @@ class FileHelper: NSObject {
     //MARK: - Plist Text File
 
     func createPlistFileWithName(name: String) -> Bool{
+        
         let filePath = self.documentsFolder().stringByAppendingString("/\(name).plist")
         
         return fileManager.createFileAtPath(filePath, contents: nil , attributes: nil)
     }
     
-    func readPlistWithName(name: String) -> NSArray? {
-        let filePath = self.documentsFolder().stringByAppendingString("/\(name).plist")
-        let fileContent = NSArray(contentsOfFile: filePath)
+    func readPlistWithName(name: String) -> NSMutableArray? {
         
+        let filePath = self.documentsFolder().stringByAppendingString("/\(name).plist")
+        var fileContent: NSMutableArray?
+        
+        if self.fileManager.fileExistsAtPath(filePath) {
+            
+            if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(filePath) as? NSMutableArray{
+                
+                fileContent = array
+            }
+            else {
+                
+                fileContent = NSMutableArray()
+            }
+        }
+        
+    
         return fileContent
     }
     
-    func savePlistFileWithName(name: String, fileContent: NSArray) -> Bool {
+    func savePlistFileWithName(name: String, fileContent: NSMutableArray) -> Bool {
+        
         let filePath = self.documentsFolder().stringByAppendingString("/\(name).plist")
         let fileData = NSKeyedArchiver.archivedDataWithRootObject(fileContent)
         
-        return fileManager.createFileAtPath(filePath, contents: fileData , attributes: nil)
+        let result = fileManager.createFileAtPath(filePath, contents: fileData , attributes: nil)
+        
+        return result
     }
     
     func deletePlistFileWithName(name: String) throws{
+        
         let filePath = self.documentsFolder().stringByAppendingString("/\(name).plist")
         try fileManager.removeItemAtPath(filePath)
     }
 
-    //MARK: - list files into a documents directory
-    
-    func listDocumentsFolderContent() throws -> [String]{
-        let directoryContents: [String]? = try fileManager.contentsOfDirectoryAtPath(documentsFolder())
-        var fileNames: [String] = []
-        
-        if let directoryContents = directoryContents {
-            fileNames = directoryContents.map({ (path:String) -> String in
-                path.componentsSeparatedByString("/").last!
-            })
-        }
-        
-        return fileNames
-    }
+
     
     private func documentsFolder () -> String{
         let folders = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        
         return folders.first!
     }
 }

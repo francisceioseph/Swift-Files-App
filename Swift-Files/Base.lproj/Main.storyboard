@@ -13,6 +13,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="N71-Iw-eB0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.23921568627450979" green="0.12549019607843137" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.92549019607843142" green="0.80784313725490198" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.23921568627450979" green="0.12549019607843137" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="vNa-Oq-fkF" kind="relationship" relationship="rootViewController" id="b2v-eL-ccy"/>
@@ -31,6 +36,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="0.23921568627450979" green="0.12549019607843137" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="V5F-C1-cR3" kind="relationship" relationship="viewControllers" id="eVS-0X-e4L"/>
@@ -198,6 +204,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Plain Text" id="KCN-VF-LIq">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="09P-f1-Ech">
+                            <color key="tintColor" red="0.23921568627450979" green="0.12549019607843137" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onSaveTap:" destination="mOy-HV-FMH" id="2Le-jv-hFx"/>
                             </connections>
@@ -215,13 +222,13 @@
         <!--Plist-->
         <scene sceneID="Tl7-GV-TUb">
             <objects>
-                <tableViewController id="CiK-pd-kgI" sceneMemberID="viewController">
+                <tableViewController id="CiK-pd-kgI" customClass="SFPlistDetailTableViewController" customModule="Swift_Files" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qmk-Sc-hJ3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="4i8-wh-dRe">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="4i8-wh-dRe">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4i8-wh-dRe" id="Oqj-4v-4vo">
@@ -236,8 +243,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Plist" id="hv7-CP-HRO">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="add" id="ATk-C4-Gxl"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="add" id="ATk-C4-Gxl">
+                            <color key="tintColor" red="0.23921568627450979" green="0.12549019607843137" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="onAddTap:" destination="CiK-pd-kgI" id="Sdn-nq-Fud"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addButton" destination="ATk-C4-Gxl" id="mER-fY-RH7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPk-Yc-bip" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -246,7 +261,7 @@
         <!--Plist-->
         <scene sceneID="a65-tq-hN5">
             <objects>
-                <tableViewController id="jGl-S1-qOt" sceneMemberID="viewController">
+                <tableViewController id="jGl-S1-qOt" customClass="SFPlistTableViewController" customModule="Swift_Files" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Ahe-Yt-QiJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

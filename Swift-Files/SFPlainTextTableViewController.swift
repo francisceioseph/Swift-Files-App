@@ -39,9 +39,6 @@ class SFPlainTextTableViewController: UITableViewController {
                 self.makeSimpleAlert("Error", message: "File Not Found!!!")
             }
             
-            
-            
-            
         case 3:
             do {
                 try FileHelper.sharedInstance.deletePlainTextFileWithName("plain_text")

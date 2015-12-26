@@ -19,6 +19,7 @@
 		0BE16DCA1C2EAFB60009C6EA /* SFPlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE16DC91C2EAFB60009C6EA /* SFPlistTableViewController.swift */; };
 		0BE16DCC1C2EB3300009C6EA /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE16DCB1C2EB3300009C6EA /* UIViewControllerExtension.swift */; };
 		0BE16DD01C2EB6050009C6EA /* SFPlainTextDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE16DCF1C2EB6050009C6EA /* SFPlainTextDetailViewController.swift */; };
+		0BE16DD21C2EC4F00009C6EA /* SFPlistDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE16DD11C2EC4F00009C6EA /* SFPlistDetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		0BE16DC91C2EAFB60009C6EA /* SFPlistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFPlistTableViewController.swift; sourceTree = "<group>"; };
 		0BE16DCB1C2EB3300009C6EA /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		0BE16DCF1C2EB6050009C6EA /* SFPlainTextDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFPlainTextDetailViewController.swift; sourceTree = "<group>"; };
+		0BE16DD11C2EC4F00009C6EA /* SFPlistDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFPlistDetailTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				0BE16DC71C2EAF900009C6EA /* SFPlainTextTableViewController.swift */,
 				0BE16DC91C2EAFB60009C6EA /* SFPlistTableViewController.swift */,
 				0BE16DCF1C2EB6050009C6EA /* SFPlainTextDetailViewController.swift */,
+				0BE16DD11C2EC4F00009C6EA /* SFPlistDetailTableViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BE16DD21C2EC4F00009C6EA /* SFPlistDetailTableViewController.swift in Sources */,
 				0BE16DC81C2EAF900009C6EA /* SFPlainTextTableViewController.swift in Sources */,
 				0BE16DD01C2EB6050009C6EA /* SFPlainTextDetailViewController.swift in Sources */,
 				0B2B7A681C2C928200380500 /* Swift_Files.xcdatamodeld in Sources */,
