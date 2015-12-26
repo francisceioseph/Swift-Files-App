@@ -9,7 +9,7 @@
 import UIKit
 
 class SFPlainTextTableViewController: UITableViewController {
-
+        
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -27,7 +27,20 @@ class SFPlainTextTableViewController: UITableViewController {
             self.makeSimpleAlert("Success", message: "File plain_text.txt created succfully!")
             
         case 1...2:
-            performSegueWithIdentifier("toPlainTextDetail", sender: indexPath.row)
+            var fileContent: String?
+            
+            do {
+                fileContent = try FileHelper.sharedInstance.readPlainTextWithName("plain_text")
+                
+                let options = ["mode": indexPath.row, "file_content": fileContent!] as [String : AnyObject]
+                performSegueWithIdentifier("toPlainTextDetail", sender:  options)
+            }
+            catch {
+                self.makeSimpleAlert("Error", message: "File Not Found!!!")
+            }
+            
+            
+            
             
         case 3:
             do {
@@ -49,20 +62,19 @@ class SFPlainTextTableViewController: UITableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toPlainTextDetail" {
-            let mode = sender as! Int
             let destinationViewController = segue.destinationViewController as! SFPlainTextDetailViewController
             
-            do {
-                let text = try FileHelper.sharedInstance.readPlainTextWithName("plain_text")
-                destinationViewController.bodyText = text
-            }
-            catch {
-                print(error)
+            if let options = sender as? [String : AnyObject],
+                let fileContent = options["file_content"] as? String{
+                    
+                    destinationViewController.bodyText = fileContent
+                    
+                    if let mode = options["mode"] as? Int where mode == 2 {
+                        
+                        destinationViewController.editMode = true
+                    }
             }
             
-            if mode == 2 {
-                destinationViewController.editMode = true
-            }
         }
     }
 }
