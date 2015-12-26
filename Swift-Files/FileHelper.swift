@@ -46,14 +46,14 @@ class FileHelper: NSObject {
         return fileManager.createFileAtPath(filePath, contents: nil , attributes: nil)
     }
     
-    func readPlistWithName(name: String) -> NSDictionary? {
+    func readPlistWithName(name: String) -> NSArray? {
         let filePath = self.documentsFolder().stringByAppendingString("/\(name).plist")
-        let fileContent:NSDictionary? = NSDictionary(contentsOfFile: filePath)
+        let fileContent = NSArray(contentsOfFile: filePath)
         
         return fileContent
     }
     
-    func savePlistFileWithName(name: String, fileContent: NSDictionary) -> Bool {
+    func savePlistFileWithName(name: String, fileContent: NSArray) -> Bool {
         let filePath = self.documentsFolder().stringByAppendingString("/\(name).plist")
         let fileData = NSKeyedArchiver.archivedDataWithRootObject(fileContent)
         
